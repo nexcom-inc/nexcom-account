@@ -7,7 +7,7 @@ export function OneAuthPromo() {
       <div className="max-w-md mx-auto text-center">
         <div className="mb-6">
           <Image
-            src="/nexcom-auth-illustration.svg"
+            src="nexcom-auth-illustration.svg"
             alt="Illustration Authentification NexCom"
             width={300}
             height={100}
