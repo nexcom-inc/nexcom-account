@@ -1,11 +1,17 @@
+"use client"
+
 import { AppSidebar } from "@/components/app-sidebar"
 import {
-    SidebarInset,
-    SidebarProvider,
-    SidebarTrigger,
+  SidebarInset,
+  SidebarProvider,
+  SidebarTrigger,
 } from "@/components/ui/sidebar"
+import { useAuth } from "@/lib/nexcom/auth/auth-context"
 
 export default function Page() {
+
+  const { user } = useAuth()
+
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -15,6 +21,9 @@ export default function Page() {
             <SidebarTrigger className="-ml-1 lg:hidden" />
           </div>
         </header>
+        <main className="flex flex-1">
+          hello, {user?.email}
+        </main> 
       </SidebarInset>
     </SidebarProvider>
   )

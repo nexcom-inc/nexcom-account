@@ -1,20 +1,25 @@
 "use client"
 
-import { useState } from "react"
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
-import type * as z from "zod"
-import { Eye, EyeOff, Check } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Tabs, TabsContent } from "@/components/ui/tabs"
+import { useAuth } from "@/lib/nexcom/auth/auth-context"
 import { useLoginStore } from "@/lib/store"
-import { emailSchema, passwordSchema, otpSchema } from "@/lib/validations"
-import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form"
+import { emailSchema, otpSchema, passwordSchema } from "@/lib/validations"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { Check, Eye, EyeOff } from "lucide-react"
+import { useRouter } from "next/navigation"
+import { useState } from "react"
+import { useForm } from "react-hook-form"
+import type * as z from "zod"
 
 export function LoginForm() {
   const { currentStep, email, isPasswordVisible, setCurrentStep, setEmail, togglePasswordVisibility } = useLoginStore()
   const [resendTimer, setResendTimer] = useState(51)
+  const { login } = useAuth();
+  const router = useRouter()
+
 
   // Email form
   const emailForm = useForm<z.infer<typeof emailSchema>>({
@@ -45,9 +50,14 @@ export function LoginForm() {
     setCurrentStep("password")
   }
 
-  const onPasswordSubmit = (data: z.infer<typeof passwordSchema>) => {
+  const onPasswordSubmit = async (data: z.infer<typeof passwordSchema>) => {
     console.log("Password submitted:", data)
-    // Implement actual login logic here
+    try {
+      await login(email, data.password);
+      router.push("/")
+    } catch (error) {
+      console.log("Login error:", error);
+   } 
   }
 
   const onOtpSubmit = (data: z.infer<typeof otpSchema>) => {
