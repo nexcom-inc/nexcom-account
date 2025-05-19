@@ -6,7 +6,7 @@ export default function NexcomLogin() {
   return (
     <div className="min-h-screen bg-[url('/auth-background.jpg')] bg-cover bg-center flex flex-col items-center justify-center p-4 ">
       <div className="w-full max-w-6xl bg-white rounded-lg shadow-lg overflow-hidden">
-        <div className="flex flex-col md:flex-row  divide-x-2 divide-gray-200">
+        <div className="flex flex-col md:flex-row  lg:divide-x-2 divide-gray-200">
           <div className="w-full md:w-1/2 p-8 md:p-12 relative flex flex-col items-start">
 
 

@@ -3,7 +3,7 @@ import Image from "next/image"
 
 export function OneAuthPromo() {
   return (
-    <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col items-center justify-center">
+    <div className="w-full hidden md:w-1/2 p-8 md:p-12 lg:flex flex-col items-center justify-center">
       <div className="max-w-md mx-auto text-center">
         <div className="mb-6">
           <Image
