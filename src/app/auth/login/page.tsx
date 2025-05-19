@@ -1,7 +1,6 @@
-import Image from "next/image"
 import { LoginForm } from "@/components/login-form"
 import { OneAuthPromo } from "@/components/one-auth-promo"
-import { SmartLoginButton } from "@/components/smart-login-button"
+import Image from "next/image"
 
 export default function NexcomLogin() {
   return (

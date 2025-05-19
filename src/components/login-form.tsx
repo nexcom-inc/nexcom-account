@@ -102,14 +102,14 @@ export function LoginForm() {
         </Form>
 {/* 
         <div className="mt-8">
-          <p className="text-sm text-gray-600 mb-4">Se connecter à l'aide de</p>
+          <p className="text-sm text-gray-600 mb-4">Se connecter à l&apos;aide de</p>
           <div className="flex flex-wrap gap-2"></div>
         </div> */}
 
         <div className="mt-8 text-sm text-gray-600">
-          Vous n'avez pas de compte Nexcom ?{" "}
+          Vous n&apos;avez pas de compte Nexcom ?{" "}
           <a href="#" className="text-blue-500 hover:underline">
-            S'inscrire maintenant
+            S&apos;inscrire maintenant
           </a>
         </div>
       </TabsContent>
@@ -203,7 +203,7 @@ export function LoginForm() {
             </div>
             <div className="flex justify-between">
               <button type="button" className="text-blue-500 text-sm" onClick={() => setCurrentStep("password")}>
-                Se connecter à l'aide du mot de passe
+                Se connecter à l&apos;aide du mot de passe
               </button>
               <button type="button" className="text-blue-500 text-sm" disabled={resendTimer > 0}>
                 {resendTimer > 0 ? `Renvoyer dans ${resendTimer}s` : "Renvoyer"}

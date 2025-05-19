@@ -1,5 +1,5 @@
-import Image from "next/image"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
 export function OneAuthPromo() {
   return (
@@ -21,7 +21,7 @@ export function OneAuthPromo() {
           Concentrez-vous sur l’essentiel, nous gérons la sécurité.
         </p>
         <Button variant="link" className="text-blue-500 hover:text-blue-600">
-          En savoir plus sur l'accès unifié
+          En savoir plus sur l&apos;accès unifié
         </Button>
 
         <div className="mt-12 flex justify-center">
