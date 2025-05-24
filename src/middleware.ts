@@ -1,3 +1,4 @@
+
 import type { NextRequest } from "next/server"
 import { NextResponse } from "next/server"
 
@@ -7,15 +8,16 @@ export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
   // const user_role = request.cookies.get(VARIABLES.USER_ROLE)?.value ?? "User"
 
+  console.log("tooken", token);
   
 
   if (pathname.startsWith("/auth/login")) {
     return NextResponse.next()
   }
 
-  if (!token) {
-    return NextResponse.redirect(new URL(`/auth/login?next=${pathname}`, request.url))
-  }
+  // if (!token) {
+  //   return NextResponse.redirect(new URL(`/auth/login?next=${pathname}`, request.url))
+  // }
 
   if (pathname === '/') {
     return NextResponse.redirect(new URL("/home", request.url))

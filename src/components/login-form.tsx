@@ -9,7 +9,7 @@ import { useLoginStore } from "@/lib/store"
 import { emailSchema, otpSchema, passwordSchema } from "@/lib/validations"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Check, Eye, EyeOff } from "lucide-react"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import { useState } from "react"
 import { useForm } from "react-hook-form"
 import type * as z from "zod"
@@ -19,6 +19,7 @@ export function LoginForm() {
   const [resendTimer, setResendTimer] = useState(51)
   const { login } = useAuth();
   const router = useRouter()
+  const next = useSearchParams().get("next")
 
 
   // Email form
@@ -54,7 +55,7 @@ export function LoginForm() {
     console.log("Password submitted:", data)
     try {
       await login(email, data.password);
-      router.push("/")
+      router.push(next || "/home")
     } catch (error) {
       console.log("Login error:", error);
    } 

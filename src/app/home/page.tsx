@@ -1,16 +1,15 @@
-"use client"
+"use client";
 
-import { AppSidebar } from "@/components/app-sidebar"
+import { AppSidebar } from "@/components/app-sidebar";
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
-} from "@/components/ui/sidebar"
-import { useAuth } from "@/lib/nexcom/auth/auth-context"
+} from "@/components/ui/sidebar";
+import { useAuth } from "@/lib/nexcom/auth/auth-context";
 
 export default function Page() {
-
-  const { user } = useAuth()
+  const { user } = useAuth();
 
   return (
     <SidebarProvider>
@@ -21,10 +20,11 @@ export default function Page() {
             <SidebarTrigger className="-ml-1 lg:hidden" />
           </div>
         </header>
-        <main className="flex flex-1">
+        <main className="flex flex-1 flex-col items-center justify-center gap-6">
           hello, {user?.email}
-        </main> 
+            <a className="text-blue-500 hover:text-blue-600" href="http://localhost:3000/api/auth/logout">Logout</a>
+        </main>
       </SidebarInset>
     </SidebarProvider>
-  )
+  );
 }
