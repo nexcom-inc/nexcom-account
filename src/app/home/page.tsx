@@ -22,7 +22,7 @@ export default function Page() {
         </header>
         <main className="flex flex-1 flex-col items-center justify-center gap-6">
           hello, {user?.email}
-            <a className="text-blue-500 hover:text-blue-600" href="http://localhost:3000/api/auth/logout">Logout</a>
+            <a className="text-blue-500 hover:text-blue-600" href="http://localhost:3000/logout">Logout</a>
         </main>
       </SidebarInset>
     </SidebarProvider>

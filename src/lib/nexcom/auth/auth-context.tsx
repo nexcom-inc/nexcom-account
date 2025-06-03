@@ -56,7 +56,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, [])
 
   const fetchUserData = async (): Promise<User> => {
-    const data : UserResponse = (await Axiosinstance.get("/auth/users/me")).data
+    const data : UserResponse = (await Axiosinstance.get("/users/me")).data
     if (!data) {
       throw new Error("Failed to fetch user data")
     }
@@ -66,10 +66,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const login = async (email: string, password: string) => {
     try {
 
-      const data : LoginResponse = (await Axiosinstance.post("/auth/login", {
+      const data : LoginResponse = (await Axiosinstance.post("/login", {
         email,
         password
-      })).data
+      }))
 
       
 
@@ -89,7 +89,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setIsLoading(true)
     try {
 
-      const data = (await Axiosinstance.post("/auth/register", {
+      const data = (await Axiosinstance.post("/register", {
         email: userData.email,
         password: userData.password
       })).data
@@ -110,7 +110,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const logout = async () => {
     setIsLoading(true)
     try {
-     await Axiosinstance.post("/auth/logout")
+     await Axiosinstance.post("/logout")
       setUser(null)
 
     } catch (error) {

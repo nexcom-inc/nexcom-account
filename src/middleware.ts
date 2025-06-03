@@ -15,9 +15,9 @@ export function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
-  // if (!token) {
-  //   return NextResponse.redirect(new URL(`/auth/login?next=${pathname}`, request.url))
-  // }
+  if (!token) {
+    return NextResponse.redirect(new URL(`/auth/login?next=${pathname}`, request.url))
+  }
 
   if (pathname === '/') {
     return NextResponse.redirect(new URL("/home", request.url))
