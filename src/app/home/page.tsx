@@ -1,15 +1,16 @@
 "use client";
 
 import { AppSidebar } from "@/components/app-sidebar";
+import { Button } from "@/components/ui/button";
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { useAuth } from "@/lib/nexcom/auth/auth-context";
+import { useAuthStore } from "@/stores/auth/auth-store";
 
 export default function Page() {
-  const { user } = useAuth();
+  const { user, logout } = useAuthStore();
 
   return (
     <SidebarProvider>
@@ -22,7 +23,9 @@ export default function Page() {
         </header>
         <main className="flex flex-1 flex-col items-center justify-center gap-6">
           hello, {user?.email}
-            <a className="text-blue-500 hover:text-blue-600" href="http://localhost:3000/logout">Logout</a>
+          <Button variant="destructive" onClick={logout}>
+            Logout
+          </Button>
         </main>
       </SidebarInset>
     </SidebarProvider>

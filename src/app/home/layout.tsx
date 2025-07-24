@@ -1,12 +1,9 @@
-"use client"
+"use client";
 
-import React from 'react'
-import Providers from './providers'
+import { RequireAuth } from "@/components/auth/RequireAuth";
 
 const HomeLayout = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <Providers>{children}</Providers>
-  )
-}
+  return <RequireAuth>{children}</RequireAuth>;
+};
 
-export default HomeLayout
+export default HomeLayout;

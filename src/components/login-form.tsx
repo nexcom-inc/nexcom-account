@@ -4,9 +4,9 @@ import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Tabs, TabsContent } from "@/components/ui/tabs"
-import { useAuth } from "@/lib/nexcom/auth/auth-context"
 import { useLoginStore } from "@/lib/store"
 import { emailSchema, otpSchema, passwordSchema } from "@/lib/validations"
+import { useAuthStore } from "@/stores/auth/auth-store"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Check, Eye, EyeOff } from "lucide-react"
 import { useRouter, useSearchParams } from "next/navigation"
@@ -17,7 +17,7 @@ import type * as z from "zod"
 export function LoginForm() {
   const { currentStep, email, isPasswordVisible, setCurrentStep, setEmail, togglePasswordVisibility } = useLoginStore()
   const [resendTimer, setResendTimer] = useState(51)
-  const { login } = useAuth();
+  const { login } = useAuthStore();
   const router = useRouter()
   const next = useSearchParams().get("next")
 
@@ -167,7 +167,7 @@ export function LoginForm() {
           <div className="bg-green-500 rounded-full p-1">
             <Check size={16} className="text-white" />
           </div>
-          <span>OTP envoyé à t***m@mouhame*******.te**</span>
+          <span>OTP envoyé à {email}</span>
         </div>
 
         <Form {...otpForm}>

@@ -1,25 +1,33 @@
 import { create } from "zustand"
-
-type LoginStep = "initial" | "password" | "otp"
+import type { LoginStep } from "@/types/auth"
 
 interface LoginState {
   currentStep: LoginStep
   email: string
   isPasswordVisible: boolean
-  otpSent: boolean
+
+  // Actions
   setCurrentStep: (step: LoginStep) => void
   setEmail: (email: string) => void
   togglePasswordVisibility: () => void
-  setOtpSent: (sent: boolean) => void
+  reset: () => void
 }
 
 export const useLoginStore = create<LoginState>((set) => ({
   currentStep: "initial",
   email: "",
   isPasswordVisible: false,
-  otpSent: false,
+
   setCurrentStep: (step) => set({ currentStep: step }),
+
   setEmail: (email) => set({ email }),
+
   togglePasswordVisibility: () => set((state) => ({ isPasswordVisible: !state.isPasswordVisible })),
-  setOtpSent: (sent) => set({ otpSent: sent }),
+
+  reset: () =>
+    set({
+      currentStep: "initial",
+      email: "",
+      isPasswordVisible: false,
+    }),
 }))
