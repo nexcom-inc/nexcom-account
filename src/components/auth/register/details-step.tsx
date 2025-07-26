@@ -14,7 +14,7 @@ interface DetailsStepProps {
   onSubmit: (data: RegisterDetailsFormData) => void
   onBackToPassword: () => void
 }
-
+// eslint-disable-next-line
 export function DetailsStep({ form, email, isLoading, onSubmit, onBackToPassword }: DetailsStepProps) {
   return (
     <Form {...form}>
@@ -78,9 +78,9 @@ export function DetailsStep({ form, email, isLoading, onSubmit, onBackToPassword
               </FormControl>
               <div className="space-y-1 leading-none">
                 <FormLabel className="text-sm">
-                  J'accepte les{" "}
+                  J&apos;accepte les{" "}
                   <a href="#" className="text-blue-500 hover:underline">
-                    conditions d'utilisation
+                    conditions d&apos;utilisation
                   </a>{" "}
                   et la{" "}
                   <a href="#" className="text-blue-500 hover:underline">

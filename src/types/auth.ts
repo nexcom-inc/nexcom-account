@@ -31,6 +31,7 @@ export type SocialProvider = "google" | "github"
 export interface SocialLoginConfig {
   provider: SocialProvider
   name: string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   icon: React.ComponentType<any>
   enabled: boolean
   bgColor: string

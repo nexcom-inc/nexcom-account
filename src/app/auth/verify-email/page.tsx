@@ -37,6 +37,8 @@ const VerifyEmail = () => {
           setError(errorData.message || "Erreur lors de la vérification de l'email")
         }
       } catch (err) {
+        console.log(err);
+        
         setError("Erreur de connexion. Veuillez réessayer.")
       } finally {
         setIsLoading(false)
@@ -107,7 +109,7 @@ const VerifyEmail = () => {
           </CardHeader>
           <CardContent className="space-y-3">
             <Button onClick={handleResendVerification} variant="outline" className="w-full bg-transparent">
-              Renvoyer l'email de vérification
+              Renvoyer l&apos;email de vérification
             </Button>
             <Button onClick={handleReturnToLogin} className="w-full">
               Retour à la connexion

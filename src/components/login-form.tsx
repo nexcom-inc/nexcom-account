@@ -54,7 +54,7 @@ export function LoginForm() {
   const onPasswordSubmit = async (data: z.infer<typeof passwordSchema>) => {
     console.log("Password submitted:", data)
     try {
-      await login(email, data.password);
+      await login({email, password: data.password});
       router.push(next || "/home")
     } catch (error) {
       console.log("Login error:", error);

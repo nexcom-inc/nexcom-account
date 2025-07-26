@@ -7,7 +7,7 @@ import Image from "next/image"
 import { useOAuthRedirect } from "@/hooks/auth/use-oauth-redirect"
 
 export default function NexcomLogin() {
-  const { isRedirecting, error, clearError } = useOAuthRedirect()
+  const { isRedirecting } = useOAuthRedirect()
 
   // État de chargement pendant la redirection OAuth
   if (isRedirecting) {
