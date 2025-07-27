@@ -128,8 +128,7 @@ export function useRegisterForms() {
         throw new Error(errorData.message || "Erreur lors de la création du compte")
       }
 
-      // Registration successful - redirect or show success message
-      window.location.href = "/auth/verify-email"
+      window.location.href = "/auth/register/success"
     } catch (err) {
       setError(err instanceof Error ? err.message : "Une erreur est survenue")
     } finally {
