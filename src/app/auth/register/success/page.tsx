@@ -26,7 +26,7 @@ export default function RegisterSuccess() {
               <div className="space-y-1">
                 <p className="text-sm font-medium text-blue-900">Vérifiez votre email</p>
                 <p className="text-sm text-blue-700">
-                  Cliquez sur le lien de confirmation dans l'email que nous vous avons envoyé pour activer votre compte.
+                  Cliquez sur le lien de confirmation dans l&apos;email que nous vous avons envoyé pour activer votre compte.
                 </p>
               </div>
             </div>
@@ -34,12 +34,12 @@ export default function RegisterSuccess() {
 
           <div className="space-y-3 text-sm text-gray-600">
             <p>
-              <strong>Vous n'avez pas reçu l'email ?</strong>
+              <strong>Vous n&apos;avez pas reçu l&apos;email ?</strong>
             </p>
             <ul className="space-y-1 ml-4 list-disc">
               <li>Vérifiez votre dossier spam ou courriers indésirables</li>
-              <li>Assurez-vous d'avoir saisi la bonne adresse email</li>
-              <li>Patientez quelques minutes pour que l'email arrive</li>
+              <li>Assurez-vous d&apos;avoir saisi la bonne adresse email</li>
+              <li>Patientez quelques minutes pour que l&apos;email arrive</li>
             </ul>
           </div>
 
@@ -54,7 +54,7 @@ export default function RegisterSuccess() {
 
           <div className="text-center">
             <p className="text-xs text-gray-500">
-              Besoin d'aide ?{" "}
+              Besoin d&apos;aide ?{" "}
               <Link href="/support" className="text-blue-600 hover:underline">
                 Contacter le support
               </Link>
