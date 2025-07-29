@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input"
 import type { UseFormReturn } from "react-hook-form"
 import type { RegisterEmailFormData } from "@/lib/validations/auth"
 import { SocialLoginSection } from "../social-login-section"
+import { useSearchParams } from "next/navigation"
 
 interface EmailStepProps {
   form: UseFormReturn<RegisterEmailFormData>
@@ -14,6 +15,9 @@ interface EmailStepProps {
 }
 
 export function EmailStep({ form, onSubmit, isLoading }: EmailStepProps) {
+
+  const next = useSearchParams().get("next")
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -43,7 +47,7 @@ export function EmailStep({ form, onSubmit, isLoading }: EmailStepProps) {
 
         <div className="mt-8 text-sm text-gray-600">
           Vous avez déjà un compte ?{" "}
-          <a href="/auth/login" className="text-blue-500 hover:underline">
+          <a href={`/auth/login${next ? `?next=${next}` : ""}`} className="text-blue-500 hover:underline">
             Se connecter
           </a>
         </div>

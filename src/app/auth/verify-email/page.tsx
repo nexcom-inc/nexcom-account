@@ -11,7 +11,9 @@ const VerifyEmail = () => {
   const [isVerified, setIsVerified] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const router = useRouter()
-  const code = useSearchParams().get("code") ?? null
+  const searchParams = useSearchParams()
+  const code = searchParams.get("code") ?? null
+  const next = searchParams.get("next")
 
   useEffect(() => {
     if (!code) {
@@ -49,7 +51,7 @@ const VerifyEmail = () => {
   }, [code, router])
 
   const handleReturnToLogin = () => {
-    router.push("/auth/login")
+    router.push(`/auth/login${next ? `?next=${next}` : ""}`)
   }
 
   const handleResendVerification = () => {

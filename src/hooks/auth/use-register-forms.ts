@@ -11,6 +11,7 @@ import {
   type RegisterPasswordFormData,
   type RegisterDetailsFormData,
 } from "@/lib/validations/auth"
+import { useSearchParams } from "next/navigation"
 
 type RegisterStep = "email" | "password" | "details"
 
@@ -21,6 +22,7 @@ export function useRegisterForms() {
   const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false)
+  const next = useSearchParams().get("next")
 
   // Forms
   const emailForm = useForm<RegisterEmailFormData>({
@@ -117,7 +119,7 @@ export function useRegisterForms() {
         acceptMarketing: data.acceptMarketing,
       }
 
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/register`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/register?${next ? `next=${next}` : ""}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(registerData),
@@ -128,7 +130,7 @@ export function useRegisterForms() {
         throw new Error(errorData.message || "Erreur lors de la création du compte")
       }
 
-      window.location.href = "/auth/register/success"
+      window.location.href = "/auth/register/success" + (next ? `?next=${next}` : "")
     } catch (err) {
       setError(err instanceof Error ? err.message : "Une erreur est survenue")
     } finally {

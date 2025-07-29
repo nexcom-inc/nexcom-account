@@ -12,12 +12,12 @@
       if(!hasCheckedAuth){
         checkAuth();
       }
-    }, [hasCheckedAuth]);
+    }, [hasCheckedAuth, checkAuth]);
 
     useEffect(() => {
       if (!isLoading  && hasCheckedAuth &&  !isAuthenticated) {
         const fullUrl = window.location.href;
-        router.replace(`auth/login?redirect=true&next=${encodeURIComponent(fullUrl)}`);
+        router.replace(`auth/login?next=${encodeURIComponent(fullUrl)}`);
       }
     }, [isAuthenticated, isLoading, hasCheckedAuth]);
 

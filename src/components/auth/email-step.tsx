@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input"
 import type { UseFormReturn } from "react-hook-form"
 import type { EmailFormData } from "@/lib/validations/auth"
 import { SocialLoginSection } from "./social-login-section"
+import { useSearchParams } from "next/navigation"
 
 interface EmailStepProps {
   form: UseFormReturn<EmailFormData>
@@ -14,6 +15,7 @@ interface EmailStepProps {
 }
 
 export function EmailStep({ form, onSubmit, isLoading }: EmailStepProps) {
+  const next = useSearchParams().get("next")
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -36,7 +38,7 @@ export function EmailStep({ form, onSubmit, isLoading }: EmailStepProps) {
 <SocialLoginSection />
         <div className="mt-8 text-sm text-gray-600">
           Vous n&apos;avez pas de compte Nexcom ?{" "}
-          <a href="/auth/register" className="text-blue-500 hover:underline">
+          <a href={`/auth/register${next ? `?next=${next}` : ""}`} className="text-blue-500 hover:underline">
             S&apos;inscrire maintenant
           </a>
         </div>

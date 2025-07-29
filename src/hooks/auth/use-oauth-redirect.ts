@@ -12,9 +12,9 @@ export function useOAuthRedirect() {
 
   useEffect(() => {
     const redirect = searchParams.get("redirect")
-    const serviceName = searchParams.get("serviceName")
     const next = searchParams.get("next")
     const oauthError = searchParams.get("error")
+    
 
     // Gérer les erreurs OAuth
     if (oauthError) {
@@ -22,11 +22,11 @@ export function useOAuthRedirect() {
       return
     }
 
-    if (redirect === "true" && serviceName === "Accounts") {
+    if (redirect === "true") {
       setIsRedirecting(true)
 
       // Délai minimum pour éviter un flash trop rapide
-      const minDelay = new Promise((resolve) => setTimeout(resolve, 1000))
+      const minDelay = new Promise((resolve) => setTimeout(resolve, 2000))
 
       Promise.all([checkAuth(), minDelay])
         .then(() => {
