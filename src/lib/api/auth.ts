@@ -70,7 +70,9 @@ class AuthAPI {
 
    // Social login methods
   getSocialLoginUrl(provider: SocialProvider): string {
-    return `${this.baseUrl}/${provider}/login`
+    const searchParams = new URLSearchParams(window.location.search)
+    const next = searchParams.get("next")
+    return `${this.baseUrl}/${provider}/login${next ? `?next=${next}` : ""}`
   }
 
   redirectToSocialLogin(provider: SocialProvider): void {
